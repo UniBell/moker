@@ -22,3 +22,8 @@ create database moker;
 show databases;
 use moker;
 ```
+6.安装和运行mocker（每次修改代码后需要重新安装）
+```
+pip install -e .
+flask run --host=0.0.0.0 --port=8282
+```
