@@ -105,7 +105,7 @@
 
 2. 增加一个服务
 
-    HTTP方法 POST，uri: /api/downSampleRules
+    HTTP方法 POST，uri: /api/services
    
     提交：
     ```
@@ -125,3 +125,9 @@
       "port": 10012
     }
     ```
+
+3. 删除一个服务
+
+   HTTP方法 DELETE，uri: /api/services/{$_id}
+   
+   返回HTTP CODE 204，body无内容
