@@ -50,3 +50,78 @@
     请求的分页信息用HTTP url参数传入，包括page和size两个参数，page表示第几页，页数从0开始；size表示每页有多少条数据。如果不传分页信息，则显示所有数据（page=0&size=MAX_INT）。
 
     返回的数据是一个列表，分页信息不在返回的数据中而是在HTTP返回头部中，HTTP头部中的分页信息在三个字段中：x-page，x-size，x-count：page表示第几页，页数从0开始；size表示每页有多少条数据；count表示数据的总数。
+
+### API接口 ###
+
+#### 服务管理 ####
+
+管理需要mock的服务，每个服务包含一个名称，一段文字说明，和一个提供服务的端口。
+
+1. 读取服务列表：
+
+    HTTP方法 GET，uri: /api/services
+
+    可选参数：
+    
+    分页：page, size -- 整数，例如：page=0&size=20 表示首页数据，每页20条
+            
+    返回：
+    ````
+    Headers:
+    x-page: 0
+    x-size: 20
+    x-count: 2
+    
+    [
+      {
+        "id": "12",
+        "name": "test1",
+        "desc": "test for xxxxxx"
+        "port": 10012
+      },
+      {
+        "id": "13",
+        "name": "test1",
+        "desc": "test for xxxxxx"
+        "port": 10012
+      }
+    ]
+    ````
+
+    读取单个服务：
+   
+    HTTP方法 GET，uri: /api/services/{$_id}
+
+    比如 GET /api/services/12
+   
+    返回：
+    ```
+    {
+      "id": "12",
+      "name": "test1",
+      "desc": "test for xxxxxx"
+      "port": 10012
+    }
+
+2. 增加一个服务
+
+    HTTP方法 POST，uri: /api/downSampleRules
+   
+    提交：
+    ```
+    {
+      "name": "test1",
+      "desc": "test for xxxxxx"
+      "port": 10012
+    }
+    ```
+   
+    返回：
+    ```
+    {
+      "id": "12",
+      "name": "test1",
+      "desc": "test for xxxxxx"
+      "port": 10012
+    }
+    ```
