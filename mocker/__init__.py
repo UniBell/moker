@@ -2,6 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask
-app = Flask(__name__)
+from flask_sqlalchemy import SQLAlchemy
 
-import mocker.views
+app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:xxxxxx@localhost/mocker'
+db = SQLAlchemy(app)
+
+import mocker.route
+import mocker.model
